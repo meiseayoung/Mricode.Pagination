@@ -98,9 +98,13 @@
         getParams: function () {
             return this.currentParams;
         },
-        setPageIndex: function (pageIndex) {
+        setPageIndex: function (pageIndex,callBack) {
             if (pageIndex !== undefined && pageIndex !== null) {
                 this.currentPageIndex = utility.convertInt(pageIndex);
+                this.render();
+                if(callBack && $.type(callBack)=== "function" ){
+                    callBack(pageIndex);
+                }
             }
         },
         setPageSize: function (pageSize) {
